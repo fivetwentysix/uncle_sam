@@ -1,16 +1,16 @@
 module UncleSam
   # Source: http://en.wikipedia.org/wiki/Standard_deduction
   FILING_STATUS_OPTIONS = {
-    :single                       => 6200.0,
-    :married_filing_jointly       => 12400.0,
-    :married_filing_separately    => 6200.0,
-    :head_of_household            => 9100.0,
-    :qualifying_surviving_spouse  => 12400
+    :single                      => 6200.0,
+    :married_filing_jointly      => 12400.0,
+    :married_filing_separately   => 6200.0,
+    :head_of_household           => 9100.0,
+    :qualifying_surviving_spouse => 12400
   }
 
   OTHER_STANDARD_DEDUCTION_AMOUNT = {
-    :single                       => 1100.0,
-    :married_filing_jointly       => 1400.0
+    :single                      => 1100.0,
+    :married_filing_jointly      => 1400.0
   }
 
   UnknownFilingStatusError = Class.new(Exception)
