@@ -16,17 +16,17 @@ module UncleSam
   UnknownFilingStatusError = Class.new(Exception)
 
   class Calculator
-    attr_reader :remaining_income, :filing_status
+    attr_reader :taxable_income, :filing_status
 
     def initialize(net_income)
-      @remaining_income = net_income
+      @taxable_income = net_income
     end
 
     def make_standard_deductions(filing_status)
       @filing_status = filing_status
       raise UnknownFilingStatusError if filing_status_is_invalid?
 
-      @remaining_income -= FILING_STATUS_OPTIONS[filing_status]
+      @taxable_income -= FILING_STATUS_OPTIONS[filing_status]
     end
 
     def make_other_standard_deductions(blind = false, senior = false, dependent = false)
@@ -51,7 +51,7 @@ module UncleSam
     end
 
     def make_deduction(amount)
-      @remaining_income -= amount
+      @taxable_income -= amount
     end
   end
 end
