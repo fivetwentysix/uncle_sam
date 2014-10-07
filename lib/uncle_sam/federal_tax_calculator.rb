@@ -41,7 +41,7 @@ module UncleSam
     }
   }
 
-  class FederalBracketDefiner
+  class FederalTaxCalculator
     attr_accessor :filing_status, :taxable_income
 
     def initialize(filing_status, taxable_income)
