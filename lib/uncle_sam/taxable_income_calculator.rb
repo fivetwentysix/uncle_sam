@@ -15,7 +15,7 @@ module UncleSam
 
   UnknownFilingStatusError = Class.new(Exception)
 
-  class Calculator
+  class TaxableIncomeCalculator
     attr_reader :taxable_income, :filing_status
 
     def initialize(net_income)
