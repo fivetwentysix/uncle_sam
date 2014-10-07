@@ -5,9 +5,11 @@ taxes for [US Form: 1040](http://www.irs.gov/pub/irs-pdf/f1040.pdf).
 
 ## Breakdown of tax calculations
 
-1. We accept the input for net income and filing status.
+1. Accepts accepts the tax payer's net income and filing status.
 2. We apply the [standard deductions](http://en.wikipedia.org/wiki/Standard_deduction)
-which will reduce the taxable income depending on the filing status of the tax payer.
+which will to determine the tax payer's taxable income.
+3. We determine which Federal tax bracket the tax payer is in by 
+accepting the tax payer's taxable income & filing status as input.
 
 ## Installation
 
