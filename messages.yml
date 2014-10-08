@@ -1,0 +1,3 @@
+---
+:usage: "uncle_sam net_income [filing_status = single] [blind = false] [senior = false] [dependent = false]"
+
