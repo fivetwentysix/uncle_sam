@@ -2,10 +2,10 @@ module UncleSam
   module Commands
     class Command
       def print(key)
-        puts message(key)
+        puts fetch_message(key)
       end
 
-      def message(key)
+      def fetch_message(key)
         messages[key]
       end
       
