@@ -1,27 +1,10 @@
 require 'yaml'
+require 'uncle_sam/commands'
 
 module UncleSam
   class CLI
     def self.run(*args)
-      print(:usage)
-    end
-
-    def self.print(key)
-      puts message(key)
-    end
-    
-    def self.message(key)
-      messages[key]
-    end
-
-    private
-
-    def self.messages
-      @messages ||= YAML.load(raw_messages_data)
-    end
-
-    def self.raw_messages_data
-      File.open(File.dirname(__FILE__) + '/../../messages.yml').read
+      UncleSam::Commands::Usage.new.execute
     end
   end
 end

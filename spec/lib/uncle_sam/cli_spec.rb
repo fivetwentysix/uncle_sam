@@ -1,22 +1,22 @@
-require './lib/uncle_sam/cli'
+require 'uncle_sam/cli'
 
 describe UncleSam::CLI do
   describe '.run' do
-    it 'prints usage statement when no arguments are given' do
-      expect(UncleSam::CLI).to receive(:print).with(:usage)
+    it 'executes usage when no arguments are given' do
+      expect_any_instance_of(UncleSam::Commands::Usage).to receive(:execute)
       UncleSam::CLI.run('')
     end
   end
 
-  describe '.print(key)' do
-    it 'prints the statement corresponding to the key' do
+  describe '#print(key)' do
+    xit 'prints the statement corresponding to the key' do
       expect(UncleSam::CLI).to receive(:puts)
       UncleSam::CLI.print(:example)
     end
   end
 
-  describe '.message(key)' do
-    it 'looks up a message from the messages.yml file' do
+  describe '#message(key)' do
+    xit 'looks up a message from the messages.yml file' do
       message = UncleSam::CLI.message(:usage)
       expect(message).to be_a(String)
     end

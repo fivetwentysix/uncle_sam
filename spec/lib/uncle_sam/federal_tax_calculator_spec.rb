@@ -1,4 +1,4 @@
-require './lib/uncle_sam/federal_tax_calculator'
+require 'uncle_sam/federal_tax_calculator'
 
 describe UncleSam::FederalTaxCalculator do
   describe '#amount' do

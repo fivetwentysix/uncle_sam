@@ -1,4 +1,4 @@
-require './lib/uncle_sam/taxable_income_calculator'
+require 'uncle_sam/taxable_income_calculator'
 
 describe UncleSam::TaxableIncomeCalculator do
   let(:average_net_income) { 51939.00 }
