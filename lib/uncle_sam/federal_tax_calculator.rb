@@ -48,12 +48,6 @@ module UncleSam
       @filing_status, @taxable_income = filing_status, taxable_income
     end
     
-    # def rate
-    #   FEDERAL_TAX_BRACKETS[filing_status].each do |rate, range|
-    #     return rate if range.include?(taxable_income)
-    #   end
-    # end
-    
     def amount
       FEDERAL_TAX_BRACKETS[filing_status].map do |rate, bracket|
         amount_for_bracket = if @taxable_income >= bracket.max
