@@ -49,19 +49,25 @@ module UncleSam
     end
     
     def amount
-      FEDERAL_TAX_BRACKETS[filing_status].map do |rate, bracket|
-        amount_for_bracket = if @taxable_income >= bracket.max
-          @taxable_income -= bracket.max
-          bracket.max
-        elsif @taxable_income <= 0
-          0
-        else
-          amount = @taxable_income
-          @taxable_income = 0
-          amount
-        end
-        rate * amount_for_bracket
-      end.inject(:+)
+      amounts_by_brackets.inject(:+)
+    end
+
+    def amounts_by_brackets
+      FEDERAL_TAX_BRACKETS[filing_status].map { |r, b| apply_bracket(r, b) }
+    end
+
+    def apply_bracket(rate, bracket)
+      amount_for_bracket = if @taxable_income >= bracket.max
+        @taxable_income -= bracket.max
+        bracket.max
+      elsif @taxable_income <= 0
+        0
+      else
+        amount = @taxable_income
+        @taxable_income = 0
+        amount
+      end
+      rate * amount_for_bracket
     end
   end
 end
