@@ -7,6 +7,8 @@ describe UncleSam::FederalTaxCalculator do
       expect(calculator.amount).to eq(4053.75)
       calculator = UncleSam::FederalTaxCalculator.new(:head_of_household, 12750)
       expect(calculator.amount).to eq(1275.00)
+      calculator = UncleSam::FederalTaxCalculator.new(:head_of_household, 4000)
+      expect(calculator.amount).to eq(400.00)
     end
   end
 end
