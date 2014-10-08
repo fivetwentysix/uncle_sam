@@ -21,7 +21,7 @@ module UncleSam
     end
 
     def self.raw_messages_data
-      File.open('./messages.yml').read
+      File.open(File.dirname(__FILE__) + '/../../messages.yml').read
     end
   end
 end
