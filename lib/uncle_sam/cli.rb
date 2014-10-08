@@ -1,4 +1,3 @@
-require 'yaml'
 require 'uncle_sam/commands'
 
 module UncleSam

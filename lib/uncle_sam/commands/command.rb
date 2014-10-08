@@ -1,3 +1,5 @@
+require 'yaml'
+
 module UncleSam
   module Commands
     class Command
@@ -16,7 +18,7 @@ module UncleSam
       end
 
       def raw_messages_data
-        File.open(File.dirname(__FILE__) + '/../../messages.yml').read
+        File.open(File.dirname(__FILE__) + '/../../../messages.yml').read
       end
     end
   end
