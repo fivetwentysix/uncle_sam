@@ -1,8 +1,8 @@
-require './lib/uncle_sam/calculator'
+require './lib/uncle_sam/taxable_income_calculator'
 
-describe UncleSam::Calculator do
+describe UncleSam::TaxableIncomeCalculator do
   let(:average_net_income) { 51939.00 }
-  let(:calculator) { UncleSam::Calculator.new(average_net_income) }
+  let(:calculator) { UncleSam::TaxableIncomeCalculator.new(average_net_income) }
 
   describe '#make_standard_deductions(filing_status)' do
     it 'deducts the matching amount from the net income' do
