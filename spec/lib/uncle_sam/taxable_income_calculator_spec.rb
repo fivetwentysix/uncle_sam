@@ -7,7 +7,7 @@ describe UncleSam::TaxableIncomeCalculator do
   describe '#make_standard_deductions(filing_status)' do
     it 'deducts the matching amount from the net income' do
       calculator.make_standard_deductions(:single)
-      expect(calculator.taxable_income).to eq(average_net_income - UncleSam::FILING_STATUS_OPTIONS[:single])
+      expect(calculator.taxable_income).to eq(average_net_income - UncleSam::FILING_STATUS_STANDARD_DEDUCTION_AMOUNTS[:single])
     end
 
     it 'rejects unknown filing status values' do
