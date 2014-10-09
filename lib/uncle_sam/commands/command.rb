@@ -3,8 +3,8 @@ require 'yaml'
 module UncleSam
   module Commands
     class Command
-      def print(key)
-        puts fetch_message(key)
+      def print(key, *args)
+        puts(fetch_message(key) % args)
       end
 
       def fetch_message(key)
