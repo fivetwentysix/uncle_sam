@@ -18,6 +18,7 @@ module UncleSam
       end
 
       def print_statement(results)
+        print :statement, net_income
       end
 
       private

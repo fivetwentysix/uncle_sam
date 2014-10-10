@@ -27,6 +27,10 @@ describe UncleSam::Commands::Calculate do
   end
 
   describe '#print_statement' do
-    it 'TODO'
+    it 'should print the net income' do
+      results = command.calculate
+      expect(command).to receive(:print).with(:statement, amount)
+      command.print_statement(results)
+    end
   end
 end
