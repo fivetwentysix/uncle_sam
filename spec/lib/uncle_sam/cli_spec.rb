@@ -11,7 +11,7 @@ describe UncleSam::CLI do
       command = double(UncleSam::Commands::Calculate)
       expect(UncleSam::Commands::Calculate).to receive(:new).with(120000.0, :single) { command }
       expect(command).to receive(:execute)
-      UncleSam::CLI.run('120000')
+      UncleSam::CLI.run(['120000'])
     end
   end
 end
