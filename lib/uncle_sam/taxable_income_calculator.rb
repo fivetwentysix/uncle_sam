@@ -15,6 +15,8 @@ module UncleSam
 
   UnknownFilingStatusError = Class.new(Exception)
 
+  PERSONAL_EXEMPTION_AMOUNT = 3900.0
+
   class TaxableIncomeCalculator
     attr_reader :taxable_income, :filing_status
 
@@ -34,6 +36,10 @@ module UncleSam
       make_deduction(amount) if blind
       make_deduction(amount) if senior
       make_deduction(amount) if dependent
+    end
+
+    def make_personal_tax_exemptions
+      make_deduction(UncleSam::PERSONAL_EXEMPTION_AMOUNT)
     end
 
     private

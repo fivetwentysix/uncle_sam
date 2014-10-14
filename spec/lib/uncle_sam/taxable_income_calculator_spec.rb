@@ -41,4 +41,11 @@ describe UncleSam::TaxableIncomeCalculator do
       end
     end
   end
+
+  describe '#make_personal_tax_exemptions' do
+    it 'deducts the personal exemption amount from the taxable income' do
+      calculator.make_personal_tax_exemptions
+      expect(calculator.taxable_income).to eq(average_net_income - UncleSam::PERSONAL_EXEMPTION_AMOUNT)
+    end
+  end
 end
