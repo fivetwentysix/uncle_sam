@@ -5,10 +5,11 @@ taxes for [US Form: 1040](http://www.irs.gov/pub/irs-pdf/f1040.pdf).
 
 ## Breakdown of tax calculations
 
-1. Accepts accepts the tax payer's net income and filing status.
+1. Accepts the tax payer's net income and filing status.
 2. We apply the [standard deductions](http://en.wikipedia.org/wiki/Standard_deduction)
 which will to determine the tax payer's taxable income.
-3. We determine which Federal tax bracket the tax payer is in by 
+3. We apply the personal tax exemptions to the remaining taxable income.
+4. We determine which Federal tax bracket the tax payer is in by 
 accepting the tax payer's taxable income & filing status as input.
 
 ## Installation
