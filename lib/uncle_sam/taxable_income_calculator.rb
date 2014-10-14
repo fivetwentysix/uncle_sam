@@ -13,9 +13,19 @@ module UncleSam
     :married_filing_jointly      => 1400.0
   }
 
+
+
   UnknownFilingStatusError = Class.new(Exception)
 
+  # Source: http://www.irs.gov/publications/p17/ch03.html
   PERSONAL_EXEMPTION_AMOUNT = 3900.0
+  PERSONAL_EXEMPTION_THRESHOLDS = {
+    :single                      => 250000,
+    :married_filing_jointly      => 300000,
+    :married_filing_separately   => 150000,
+    :head_of_household           => 275000,
+    :qualifying_surviving_spouse => 300000
+  }
 
   class TaxableIncomeCalculator
     attr_reader :taxable_income, :filing_status
