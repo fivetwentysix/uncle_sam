@@ -47,5 +47,7 @@ describe UncleSam::TaxableIncomeCalculator do
       calculator.make_personal_tax_exemptions
       expect(calculator.taxable_income).to eq(average_net_income - UncleSam::PERSONAL_EXEMPTION_AMOUNT)
     end
+
+    it 'phases out by %2 for each threshold amount if your AGI is above a certain amount'
   end
 end
