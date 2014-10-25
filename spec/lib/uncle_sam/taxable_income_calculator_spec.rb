@@ -41,4 +41,21 @@ describe UncleSam::TaxableIncomeCalculator do
       end
     end
   end
+
+  describe '#make_personal_tax_exemptions' do
+    before { calculator.filing_status = :single }
+    it 'deducts the personal exemption amount from the taxable income' do
+      calculator.make_personal_tax_exemptions
+      expect(calculator.taxable_income).to eq(average_net_income - UncleSam::PERSONAL_EXEMPTION_AMOUNT)
+    end
+
+    it 'phases out by %2 for each threshold amount if your AGI is above a certain amount' do
+      calculator.taxable_income = 255500.0
+      calculator.make_personal_tax_exemptions
+      exemption = UncleSam::PERSONAL_EXEMPTION_AMOUNT * 
+        UncleSam::PERSONAL_EXEMPTION_PHASE_MODIFIER *
+        UncleSam::PERSONAL_EXEMPTION_PHASE_MODIFIER
+      expect(calculator.taxable_income).to eq(255500.0 - exemption)
+    end
+  end
 end

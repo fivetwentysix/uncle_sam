@@ -15,8 +15,20 @@ module UncleSam
 
   UnknownFilingStatusError = Class.new(Exception)
 
+  # Source: http://www.irs.gov/publications/p17/ch03.html
+  PERSONAL_EXEMPTION_AMOUNT = 3900.0
+  PERSONAL_EXEMPTION_THRESHOLDS = {
+    :single                      => 250000.0,
+    :married_filing_jointly      => 300000.0,
+    :married_filing_separately   => 150000.0,
+    :head_of_household           => 275000.0,
+    :qualifying_surviving_spouse => 300000.0
+  }
+  PERSONAL_EXEMPTION_PHASE_MODIFIER = 0.98
+  PERSONAL_EXEMPTION_PHASE_INTERVAL = 2500.0
+
   class TaxableIncomeCalculator
-    attr_reader :taxable_income, :filing_status
+    attr_accessor :taxable_income, :filing_status
 
     def initialize(net_income)
       @taxable_income = net_income
@@ -34,6 +46,20 @@ module UncleSam
       make_deduction(amount) if blind
       make_deduction(amount) if senior
       make_deduction(amount) if dependent
+    end
+
+    def make_personal_tax_exemptions
+      make_deduction(personal_exemption_amount)
+    end
+
+    def personal_exemption_amount
+      remaining_amount_after_threshold = @taxable_income - PERSONAL_EXEMPTION_THRESHOLDS[@filing_status]
+      interval_count = remaining_amount_after_threshold.to_i / PERSONAL_EXEMPTION_PHASE_INTERVAL.to_i
+      exemption_amount = PERSONAL_EXEMPTION_AMOUNT
+      interval_count.times do
+        exemption_amount *= PERSONAL_EXEMPTION_PHASE_MODIFIER
+      end
+      exemption_amount
     end
 
     private
