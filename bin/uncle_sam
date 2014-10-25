@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'uncle_sam'
+UncleSam::CLI.run(ARGV)

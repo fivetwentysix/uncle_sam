@@ -1,6 +1,6 @@
 module UncleSam
   # Source: http://en.wikipedia.org/wiki/Standard_deduction
-  FILING_STATUS_OPTIONS = {
+  FILING_STATUS_STANDARD_DEDUCTION_AMOUNTS = {
     :single                      => 6200.0,
     :married_filing_jointly      => 12400.0,
     :married_filing_separately   => 6200.0,
@@ -26,7 +26,7 @@ module UncleSam
       @filing_status = filing_status
       raise UnknownFilingStatusError if filing_status_is_invalid?
 
-      @taxable_income -= FILING_STATUS_OPTIONS[filing_status]
+      @taxable_income -= FILING_STATUS_STANDARD_DEDUCTION_AMOUNTS[filing_status]
     end
 
     def make_other_standard_deductions(blind = false, senior = false, dependent = false)
@@ -43,7 +43,7 @@ module UncleSam
     end
 
     def filing_status_is_invalid?
-      FILING_STATUS_OPTIONS[filing_status].nil?
+      FILING_STATUS_STANDARD_DEDUCTION_AMOUNTS[filing_status].nil?
     end
 
     def other_standard_deduction_amount
